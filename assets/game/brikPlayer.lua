@@ -921,9 +921,9 @@ function BP:moveRight(ifInit)
         return true
     end
 end
-function BP:moveDown()
+function BP:moveDown(ifInstant)
     if not self:ifoverlap(self.hand.matrix,self.handX,self.handY-1) then
-        self:moveHand('moveY',-1,true)
+        self:moveHand('moveY',-1,not ifInstant)
         self:freshDelay('drop')
         return true
     end
@@ -1517,7 +1517,7 @@ function BP:tickStep()
                 if dist>0 then
                     local oy=self.handY
                     while dist>0 do
-                        if not self:moveDown() then break end
+                        if not self:moveDown(dist>1) then break end
                         dist=dist-1
                     end
                     if oy~=self.handY then
