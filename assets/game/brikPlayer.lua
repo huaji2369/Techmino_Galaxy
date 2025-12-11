@@ -1816,9 +1816,9 @@ function BP:render()
 
             gc_setColor(1,1,1)
             gc_draw(self.particles.cornerCheck)
-            self.particles.spinArrow:draw()
             gc_draw(self.particles.trail)
             gc_draw(self.particles.hitSparkle)
+            self.particles.spinArrow:draw()
 
             gc_translate(0,-self.fieldDived)
 
