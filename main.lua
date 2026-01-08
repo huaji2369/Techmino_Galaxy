@@ -715,7 +715,7 @@ if SETTINGS.system.portrait then -- Brute fullscreen config for mobile device
 end
 PROGRESS.load()
 PROGRESS.fix()
-VCTRL.importSettings(FILE.load('conf/touch','-json'))
+VCTRL.importSettings(FILE.safeLoad('conf/touch','-json'))
 KEYMAP.brik=KEYMAP.new{
     {act='moveLeft', keys={'left'}},
     {act='moveRight',keys={'right'}},
