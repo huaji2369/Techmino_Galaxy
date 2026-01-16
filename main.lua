@@ -701,7 +701,7 @@ UTIL.time("Configure Zenitha",true)
 -- Load saving data
 
 do -- Load setting file and trigger all setting-triggers only one time
-    local setFile=FILE.load('conf/settings','-json') or {}
+    local setFile=FILE.safeLoad('conf/settings','-json') or {}
     setFile._system,setFile.system=setFile.system,nil
     TABLE.update(SETTINGS,setFile)
     for k,v in next,SETTINGS._system do
@@ -780,7 +780,7 @@ KEYMAP.sys=KEYMAP.new{
     {act='down',   keys={'down'}},
     {act='select', keys={'return'}},
 }
-local keys=FILE.load('conf/keymap','-json')
+local keys=FILE.safeLoad('conf/keymap','-json')
 if keys then
     KEYMAP.brik:import(keys['brik'])
     KEYMAP.gela:import(keys['gela'])
